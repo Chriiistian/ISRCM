@@ -1,0 +1,234 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+/*Sidebar imagenes */ 
+#background-login{
+  height: auto;
+  background: linear-gradient(90deg, rgba(78,255,0,1) 0%, rgba(38,165,130,1) 43%, rgba(35,52,179,1) 100%);
+}
+
+.Sidebar-logo{
+  height: 90px;
+  width: 120px;
+  background-color: #ffffff;
+  border-radius: 9px;
+  border: 3px solid  black;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  position: relative;
+  left: 62.5px;
+  top: 0px;
+}
+
+.Sidebar-mintra{
+  height: 90px;
+  width: 120px;
+  background-color: #ffffff;
+  border: 1px solid  black;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  position: relative;
+  left: 62.5px;
+  top: 0px;
+}
+/* Fondo pagina*/
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #A3ADA5;
+}
+
+/* Sidebar*/ 
+.Sidebar{
+  height: 460px;
+  width: 250px;
+  background-color: #01C681;
+  border-radius: 30px;
+  float:left;
+  margin: auto;
+}
+
+.SidebarList{
+  height: auto;
+  padding: 5%;
+
+}
+.SidebarList .row{
+  height: 100%;
+  height: 50px;
+  border: 3px solid  white;
+  border-radius: 10px ;
+  list-style-type: none;
+  margin: 5%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  
+}
+
+.SidebarList .row:hover{
+  cursor: pointer;
+  background-color: #01754A;
+}
+
+.SidebarList .row #active{
+  background-color: #01754A;
+}
+
+.row #title{
+  flex: 70%;
+}
+
+/* Page CreateGroup */ 
+.CreateGroup {
+  height: 45vw auto;
+  width: 950px ;
+  border-radius: 10px ;
+  display: block;
+  background-color: #01C681;
+  position: static;
+  margin: 20px auto;
+  
+
+}
+/* Selector de cursos  */ 
+.BasicSelect{
+  background-color: #D9D9D9;
+  border: 3px solid  black;
+  margin: 25px auto;
+}
+
+/* boton*/ 
+.ActiButton{
+  color:  #D9D9D9;
+  
+  
+}
+
+.ActiText{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Añadir empleados selector*/ 
+.ChekAñadir{
+  width: 100%;
+  box-sizing: border-box;
+  margin:0px auto; 
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.AñadirEmpleado{
+  background-color: #D9D9D9;
+  border: 3px solid  black;
+  
+}
+
+.AñadirList{
+  width: 100%;
+  
+}
+/* Eliminar empleados selector*/ 
+.CheckEliminar{
+  width: 100%;
+  box-sizing: border-box;
+  margin:0px auto; 
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  
+}
+
+.EliminarEmpleado{
+  background-color: #D9D9D9;
+  border: 3px solid  black;
+  width: 100%;
+}
+
+.EliminarList{
+  width: 100%;
+  
+}
+
+.Divider{
+  color: aqua;
+}
+
+
+.CountCurso{
+  background-color: #D9D9D9;
+  border: 3px solid  black;
+}
+
+/*Boton crear grupó y limpiar todo*/
+.BotonFile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.ViewEmp {
+  height: 45vw;
+  width: 850px;
+  border-radius: 10px ;
+  display: block;
+  background-color: #01C681;
+  position: static;
+  margin: 20px auto;
+}
+
+.ViewGroup {
+  height: 45vw;
+  width: 850px;
+  border-radius: 10px ;
+  display: block;
+  background-color: #01C681;
+  position: static;
+  margin: 20px auto;
+}
+
+#List_Emp{
+  width: 100%;
+  vertical-align: text-top;
+  background-color: #D9D9D9;
+}
+
+#List_Group{
+  width: 100%;
+  background-color: #A3ADA5;
+}
+
+#List-button{
+  display: flex;
+  flex-direction:row-reverse;
+}
+
+#Text_Emp{
+  text-align: auto;
+  font-size: large;
+  ;
+}
+
+#BEditar{
+  background-color: #cddc39;
+}
+
+#BStart{
+  background-color: green;
+}
+
+

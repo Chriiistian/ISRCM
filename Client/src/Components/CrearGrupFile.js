@@ -122,9 +122,13 @@ class CrearGrupFile extends Component {
           a.push(e)
         }
         return a},[])
+
+
     })
+
+
    }
- 
+   
 
     Obtenercurso(e){
         var {value} = e.target;
@@ -188,143 +192,126 @@ class CrearGrupFile extends Component {
   render(){
   return (
         <div>
-          <br></br>
             <div className="ActiButton">
-              <div className="ActiText">
-                <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <Fab color="#D9D9D9" aria-label="add"> 
-                <AddIcon />        
-                </Fab>      
-                </Box>
-                <InputLabel>
-                Crear Grupo
-                </InputLabel>
-              </div>
+                    <div className="ActiText">
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                    <Fab color="#D9D9D9" aria-label="add"> 
+                    <AddIcon />        
+                    </Fab>      
+                    </Box>
+                    <InputLabel>
+                    Crear Grupo
+                    </InputLabel>
+                </div>
             </div>
         {/* -------------------------------- SELECCIONAR CURSO -----------------------------*/}
-        <div className="Basic">
-          <div className="BasicSelect">   
-            <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                  Seleccione Cursos Disponibles
-                </InputLabel>
-                <NativeSelect
-                  defaultValue={1}
-                  inputProps={{
-                    name: 'Seleccione Cursos Disponibles',
-                    id: 'uncontrolled-native',
-                  }}
-                  onChange ={this.Obtenercurso}
-                  >
-                    <option value = {1}>*Seleccione un curso*</option>
-                  {
-                  this.state.cursos.map(elemento => 
-                    {
-                      return(<option value = {elemento._id}  >{elemento['Nombre Curso']} </option>)
-                    }
-                    )
-                    }
-                </NativeSelect>
-              </FormControl>
-            </Box>
-          </div>
-        </div> {/* ----------------------------- FIN SELECCIOANR CURSO ------------------------------------*/}
-        
-        <div className="Añadir"> 
-          <div className="AñadirEmpleado">  
-            <h5>Seleccione a los empleados</h5>  
-            <div className="AñadirList">  
-              <div className="scrolla">          
-                <Box sx={{ display: 'flex' }}>
-                  <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-                  {/* ----------------- */}
-                  <Form>
-                    <div className="scroll">{
-                      this.state.empleados.map(empleado => {
-                        return (
-                          <div key={`default-${empleado._id}`} className="mb-3 borde">
-                            <Form.Check type='checkbox' value = {empleado._id} id={empleado._id}>
-                              <Form.Check.Input  type='checkbox' isValid  onChange = {this.checkclick}/>
-                              <Form.Check.Label>{empleado['Nombre'] + ' ' + empleado['Apellido']}</Form.Check.Label>
-                              <Form.Control.Feedback type="valid">
-                                {empleado['Departamento'] + ' - ' + empleado['Cargo']}
-                              </Form.Control.Feedback>
-                            </Form.Check>
-                          </div>
-                        )})}
-                    </div>
-                  </Form>
-                  {/* ------------- */}
-                        <FormHelperText>Seleccionar para añadirlo al curso</FormHelperText>
-                  </FormControl> 
-                </Box>
-              </div>
-            </div>   
-            <div className= "BAñadir">     
-              <div className="BBAñadir">
-                 <Button onClick={this.ObtenerEmpleadosCursantes} variant="contained">Añadir</Button>
-              </div>
-            </div>
-          </div>
-        </div>
-
+       <div className="BasicSelect">   
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+              Seleccione Cursos Disponibles
+            </InputLabel>
+            <NativeSelect
+              defaultValue={1}
+              inputProps={{
+                name: 'Seleccione Cursos Disponibles',
+                id: 'uncontrolled-native',
+              }}
+              onChange ={this.Obtenercurso}
+              >
+                <option value = {1}>*Seleccione un curso*</option>
+              {
+              this.state.cursos.map(elemento => 
+                {
+                  return(<option value = {elemento._id}  >{elemento['Nombre Curso']} </option>)
+                }
+                )
+                }
+            </NativeSelect>
+          </FormControl>
+        </Box>
+      </div> {/* ----------------------------- FIN SELECCIOANR CURSO ------------------------------------*/}
+            <b1>Seleccione a los empleados</b1>
+            <div className="AñadirEmpleado">
             
-        <div className="Eliminar">
-          <div className="EliminarEmpleado">
-            <h5>Empleados que harán curso de "{this.state.nombre_curso}"</h5>
-            <div className="EliminarList"> 
-              <div className="scrolla">              
-                <Box sx={{ display: 'flex' }}>
-                  <Form>
-                    <div className="scroll">{
-                        this.state.cursantes.map(cursante => {
-                          return (
-                            <div key={`default-${cursante._id}`} className="mb-3 borde">
-                              <Form.Check type='checkbox' value = {cursante._id} id={cursante._id}>
-                                <Form.Check.Input  type='checkbox' isValid  onChange = {this.Removecheckclick}/>
-                                <Form.Check.Label>{cursante['Nombre'] + ' ' + cursante['Apellido']}</Form.Check.Label>
-                                <Form.Control.Feedback type="valid">
-                                  {cursante['Departamento'] + ' - ' + cursante['Cargo']}
-                                </Form.Control.Feedback>
-                              </Form.Check>
-                            </div>
-                            )})}
-                    </div>
-                  </Form>
-                </Box>
-              </div>
-            </div> 
-            <div className= "BAñadir">     
-              <div className="BBAñadir">
-                <Button variant="contained" color="error" onClick = {this.RemoverObtenerEmpleadosCursantes} >Remover</Button>
-              </div>
-            </div>   
-          </div>
-        </div>
+            <div className="AñadirList">
+            
+            <Box sx={{ display: 'flex' }}>
+                <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+    
+                    {/* ----------------- */}
+               <Form>
+          <div className="scroll">
+            {
+              this.state.empleados.map(empleado => {
+                return (
+                  <div key={`default-${empleado._id}`} className="mb-3 borde">
+                    <Form.Check type='checkbox' value = {empleado._id} id={empleado._id}>
+                      <Form.Check.Input  type='checkbox' isValid  onChange = {this.checkclick}/>
+                      <Form.Check.Label>{empleado['Nombre'] + ' ' + empleado['Apellido']}</Form.Check.Label>
+                      <Form.Control.Feedback type="valid">
+                        {empleado['Departamento'] + ' - ' + empleado['Cargo']}
+                      </Form.Control.Feedback>
+                    </Form.Check>
+                  </div>)
+              }
+              )}
 
-        <br></br>
-        <div className="Contador">
-          <div className="CountCurso">
+          </div>
+        </Form>
+        {/* ------------- */}
+                    <FormHelperText>Seleccionar para añadirlo al curso</FormHelperText>
+                </FormControl> 
+            </Box>
+            
+            </div>
+                        
+            <Button onClick={this.ObtenerEmpleadosCursantes} variant="contained">Añadir</Button>
+            </div>
+            <b1>Empleados que harán curso de "{this.state.nombre_curso}"</b1>
+            <div className="EliminarEmpleado">
+                <div className="EliminarList">               
+                <Box sx={{ display: 'flex' }}>
+                <Form>
+          <div className="scroll">
+            {
+              this.state.cursantes.map(cursante => {
+                return (
+                  <div key={`default-${cursante._id}`} className="mb-3 borde">
+                    <Form.Check type='checkbox' value = {cursante._id} id={cursante._id}>
+                      <Form.Check.Input  type='checkbox' isValid  onChange = {this.Removecheckclick}/>
+                      <Form.Check.Label>{cursante['Nombre'] + ' ' + cursante['Apellido']}</Form.Check.Label>
+                      <Form.Control.Feedback type="valid">
+                        {cursante['Departamento'] + ' - ' + cursante['Cargo']}
+                      </Form.Control.Feedback>
+                    </Form.Check>
+                  </div>)
+              }
+              )}
+
+          </div>
+        </Form>
+                </Box>
+                <Button variant="contained" color="error" onClick = {this.RemoverObtenerEmpleadosCursantes} >Remover</Button>
+                </div>
+            </div> 
             <br></br>
-            <b1>Cantidad empleados: {this.state.cursantes.length} </b1> <br></br>
-            <b1>Duracion del Curso: {this.state.duracion_curso} </b1> 
-          </div>
-        </div>
-        <br></br>
-        <div className="BotonFile">
-          <div className="Bcreargrupo">
+            <div className="CountCurso">
+                <br></br>
+                <b1>Cantidad empleados: {this.state.cursantes.length} </b1> <br></br>
+                <b1>Duracion del Curso: {this.state.duracion_curso} </b1> 
+            </div>
+            <br></br>
+            <div className="BotonFile">
             <Button onClick ={this.CrearGrupo} variant="contained">CREAR GRUPO</Button>
-          </div>
-          <div className="BLimpiar">
             <Button variant="contained" color="error" startIcon={<DeleteIcon />}>
-              LIMPIAR TODO
-            </Button> 
-          </div>          
+                LIMPIAR TODO
+            </Button>           
+            </div>
         </div>
-      </div> 
   );
     }
+  
 }
 
 export default CrearGrupFile;
