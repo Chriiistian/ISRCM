@@ -261,6 +261,7 @@ body{
   margin: 20px auto;
 }
 
+/*VER GRUPO*/
 .ViewGroup {
   height: 45vw;
   width: 950px;
@@ -269,6 +270,19 @@ body{
   background-color: #01C681;
   position: static;
   margin: 20px auto;
+}
+
+.btn1{
+  width: 70%;
+  display: table-row-group;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.btn2{ 
+  margin: 15px;
+  border-radius: 10px ;
 }
 
 #List_Emp{
@@ -295,11 +309,23 @@ body{
 
 #BEditar{
   background-color: #cddc39;
+  border: 3px solid  white;
+  border-radius: 10px ;
+
 }
 
 #BStart{
   background-color: green;
+  border: 3px solid  white;
+  border-radius: 10px ;
 }
+
+#BBorrar{
+  border: 3px solid  white;
+  border-radius: 10px ;
+}
+
+
 /* Monitoring*/
 
 
@@ -332,41 +358,3 @@ body{
   height: 45px;
   width: 400px;
 }
-
-/* ver
-.ViewBasic{
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  
-}
-
-.ViewBasicSelect{
-  background-color: #D9D9D9;
-  
-  
-}
-
-.ViewSide{
-  flex-basis: 50%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.scrollView{
-  height: 600px;
-  width: 759px;
-  background: #f1f1f1; 
-  overflow-y: scroll;
-  overflow-x: hidden;
-  border: 3px solid  black;
-}
-
-.CountCurso{
-  background-color: #D9D9D9;
-  border: 3px solid  black;
-  width: 80%;  
-}
-
-*/
