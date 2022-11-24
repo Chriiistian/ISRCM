@@ -12,7 +12,7 @@ const groupSchema = mongoose.Schema({
 
   },
   curso: {
-    type: String,
+    type: Object,
     required: true
   },
   fecha_inicio:{

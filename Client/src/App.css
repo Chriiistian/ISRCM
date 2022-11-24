@@ -8,6 +8,25 @@
   background: linear-gradient(90deg, rgba(78,255,0,1) 0%, rgba(38,165,130,1) 43%, rgba(35,52,179,1) 100%);
 }
 
+/* ES PARA QUE EL LINK TO SE VUELVA COLOR BLANCO */
+.title {
+  flex: 70%;
+  color: white;
+  text-decoration: underline ;
+}
+/* ES PARA QUE EL LINK TO SE VUELVA COLOR BLANCO  (FIN)*/
+
+/* Page EditGroup*/
+.EditGroup {
+  height: 45vw auto;
+  width: 950px ;
+  border-radius: 10px ;
+  display: block;
+  background-color: #01C681;
+  position: static;
+  margin: 20px auto;
+}
+
 .Sidebar-logo{
   height: 90px;
   width: 120px;
@@ -344,7 +363,7 @@ body{
   width: 100%;
   vertical-align: text-top;
   background-color: #D9D9D9;
-  
+  border-color: black;
 }
 
 #Cur_sec{
@@ -357,4 +376,13 @@ body{
 #bar{
   height: 45px;
   width: 400px;
+}
+/*A COLOR BLANCO  (FIN)*/
+.scrollView{
+  height: 600px;
+  width: 759px;
+  background: #f1f1f1; 
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 3px solid  black;
 }

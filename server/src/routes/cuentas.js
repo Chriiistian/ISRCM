@@ -19,7 +19,8 @@ router.get("/cuenta", (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   });
-  
+
+
   // get a user
   router.get("/cuenta/:id", (req, res) => {
     const { id } = req.params;

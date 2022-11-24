@@ -29,7 +29,8 @@ app.get('/', (req, res) => {
 
 //mongoose
 mongoose      
-    .connect("mongodb://torresproject.com:27019/Capacitacion")
+    //.connect("mongodb://torresproject.com:27019/Capacitacion")
+    .connect("mongodb+srv://root:1234@detest.hgkm2r1.mongodb.net/?retryWrites=true&w=majority/test")
     .then(()=>console.log('Conectado al servidor de  MONGO DB'))
     .catch((error) => console.log(error))
 
