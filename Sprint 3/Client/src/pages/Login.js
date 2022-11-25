@@ -66,52 +66,59 @@ export default function Login(){
 
 
     return(
-        <Container id="main-container" className="d-grid h-100">
-            <Card id="card-login" className=" text-center ">
-                <Form id="sign-in-form" className="text-center w-100">
-                    <img className="mb-4 isrcm-logo" src={Logo} alt="ISCRM"/>
-                    <h1 className="mb-3 fs-3 fw-normal">Inicia sesion por favor</h1>
-                    
-                    <Form.Group controlId="sing-in-email-address">
-                        <Form.Control id='input-correo' required type='email' size='lg' placeholder="correo electronico" autoComplete="username" className="position-relative"/>
-                    </Form.Group>
-                    
-                    <Form.Group controlId="sing-in-password" className="mb-3">
-                        <Form.Control id='input-pass' required type='password' size='lg' placeholder="contraseña" autoComplete="current -password" className="position-relative"/>
-                    </Form.Group>
+        <div>
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
+            <div class="content">
+                <Container id="main-container" className="d-grid h-100">
+                    <Card id="card-login" className=" text-center ">
+                        <Form id="sign-in-form" className="text-center w-100">
+                            <img className="mb-4 isrcm-logo" src={Logo} alt="ISCRM"/>
+                            <h1 className="mb-3 fs-3 fw-normal">Inicia sesion por favor</h1>
+                            
+                            <Form.Group controlId="sing-in-email-address">
+                                <Form.Control id='input-correo' required type='email' size='lg' placeholder="correo electronico" autoComplete="username" className="position-relative"/>
+                            </Form.Group>
+                            
+                            <Form.Group controlId="sing-in-password" className="mb-3">
+                                <Form.Control id='input-pass' required type='password' size='lg' placeholder="contraseña" autoComplete="current -password" className="position-relative"/>
+                            </Form.Group>
 
-                    <Form.Group controlId="remember-me" className="d-flex justify-content-center">
-                        <Form.Check label="recuerdame"/>
-                    </Form.Group>
-                    <div className="d-grid">
-                {/* <Router>
-                <Route exact element ={Creargrupos} />    */}
-                    <Button id="boton" variant="primary" size="lg" onClick={validarDatos}>iniciar</Button>
-                {/* </Router> */}
-                    </div>
-                    <div className="d-grid">
-                     
-                    <Button variant="link" size="lg">Crear usuario</Button>
-                    </div>
-                </Form>
-            </Card>
-            <section class="">
-                <footer class="text-center text-white">
-                    <div class="container p-4 pb-0">
+                            <Form.Group controlId="remember-me" className="d-flex justify-content-center">
+                                <Form.Check label="recuerdame"/>
+                            </Form.Group>
+                            <div className="d-grid">
+                        {/* <Router>
+                        <Route exact element ={Creargrupos} />    */}
+                            <Button id="boton" variant="primary" size="lg" onClick={validarDatos}>Iniciar</Button>
+                        {/* </Router> */}
+                            </div>
+                            <div className="d-grid">
+                            
+                            <Button variant="link" size="lg">Crear usuario</Button>
+                            </div>
+                        </Form>
+                    </Card>
                     <section class="">
-                        <p class="d-flex justify-content-center align-items-center">
-                        <span class="me-3"></span>
-                        <button type="button" class="btn btn-outline-light btn-rounded">
-                            acerca de nosotros
-                        </button>
-                        </p>
+                        <footer class="text-center text-white">
+                            <div class="container p-4 pb-0">
+                            <section class="">
+                                <p class="d-flex justify-content-center align-items-center">
+                                <span class="me-3"></span>
+                                <button type="button" class="btn btn-outline-dark btn-rounded" style={{ color: 'black' }}>
+                                    Acerca de nosotros
+                                </button>
+                                </p>
+                            </section>
+                            </div>
+                            <div class="text-center p-3" style={{ color: 'black' }}>
+                            © 2022 Copyright: I.S.C.R.M.
+                            </div>
+                        </footer>
                     </section>
-                    </div>
-                    <div class="text-center p-3">
-                    © 2022 Copyright: I.S.C.R.M.
-                    </div>
-                </footer>
-            </section>
-        </Container>
+                </Container>
+            </div>
+        </div>
     );
 }
