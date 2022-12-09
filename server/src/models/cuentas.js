@@ -16,7 +16,6 @@ const cuentaSchema = mongoose.Schema({
 
   }
 
-
 },
   
   {collection: 'Cuentas', versionkey: false }

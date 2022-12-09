@@ -16,22 +16,30 @@ import InputLabel from '@mui/material/InputLabel';
 import NativeSelect from '@mui/material/NativeSelect';
 import "../styles/checkbox_style.css";
 
+import { useParams } from "react-router-dom";
 
-class CrearGrupFile extends Component {
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
+
+class EditGroup extends Component {
 
     constructor(){
         super();
         this.state = {
           cursos: [],
-          empleados: [], 
+          empleados: [],
+          res_empleados: [], 
           id_cursantes: [],
           id_NO_cursantes:[],
           curso_seleccionado: [],
           cursantes:[],  //dato a la base
           duracion_curso: 0,
+          grupos:[],
+          grupo_editar: [],
         }
         this.base = {
-            nombre_grupo: 'test',
+            nombre_grupo: '',
             empleados: [],
             curso: [],
             fecha_inicio: '',
@@ -40,9 +48,16 @@ class CrearGrupFile extends Component {
         this.ObtenerEmpleadosCursantes = this.ObtenerEmpleadosCursantes.bind(this)
         this.RemoverEmpleadosCursantes = this.RemoverEmpleadosCursantes.bind(this)
         this.Obtenercurso = this.Obtenercurso.bind(this)
-        this.CrearGrupo = this.CrearGrupo.bind(this)
+        this.ActualizarGrupo = this.ActualizarGrupo.bind(this)
         this.Limpiar_todo = this.Limpiar_todo.bind(this)  
       }
+
+      componentDidMount() {
+        this.obtenerDatos();
+          this.fetchCurso();
+          
+          
+        }
       
       checkclick = (e) =>{
         var {id, checked} = e.target;
@@ -92,8 +107,7 @@ class CrearGrupFile extends Component {
           e.cursantes = this.eliminar_repeditos(e.cursantes)
           e.cursantes = this.ordenar_arreglo(e.cursantes)
         })
-      })
-     
+      })  
    }
 
 
@@ -150,53 +164,70 @@ class CrearGrupFile extends Component {
                   }
                   }
       
-      componentDidMount() {
-        this.fetchCurso();
-        this.fetchEmpleados();
-      }
-      
       Limpiar_todo(e){
         this.fetchEmpleados()
         this.setState({cursantes:[], id_cursantes:[],id_NO_cursantes:[], duracion_curso: 0,curso_seleccionado:1})
       }
       
       fetchCurso(){fetch('http://localhost:9000/api/curso').then(res => res.json()).then(data => {this.setState({cursos:data});})}
+
+      async  obtenerDatos(e){
+
+        const datos_empleados = await fetch('http://localhost:9000/api/empleado').
+        then(res => res.json()).
+        then((data) => {
+          data = this.ordenar_arreglo(data)
+          return data
+        })
+        
+        let { id } = this.props.params;
+        const grupo = await fetch(`http://localhost:9000/api/grupo/${id}`)
+        .then(res => res.json())
+        .then(data =>{return data})  
+        const datos_cursantes = grupo.empleados
+        const datos_curso = grupo.curso
+        const id_empleados = datos_cursantes.map((item)=>{return item._id})
+        
+        const restantes = datos_empleados.filter((item)=>!(id_empleados.includes(item._id)))
+        
+        this.setState({empleados:restantes, cursantes: datos_cursantes, curso_seleccionado: datos_curso})
+      }
+
+    
       
-      fetchEmpleados(){fetch('http://localhost:9000/api/empleado').then(res => res.json()).then((data) => {
-      data = this.ordenar_arreglo(data)
-      this.setState({ empleados: data });})
-    }
 
+    ActualizarGrupo(e){
+      
+      let { id } = this.props.params;
+      var today = new Date();
+      var day = today.getDate();
+      var month = today.getMonth() + 1;
+      var year = today.getFullYear();
 
+      this.base.curso = this.state.curso_seleccionado
+      this.base.empleados = this.state.cursantes
+      this.base.fecha_inicio = `${day}/${month}/${year}`
+      this.base.fecha_fin = `${day}/${month+1}/${year}`
+      let nombre_grupo = document.getElementById('input-nombre').value
 
-      CrearGrupo(e){
-        // crea un nuevo objeto `Date`
-        var today = new Date();
-        var day = today.getDate();
-        var month = today.getMonth() + 1;
-        var year = today.getFullYear();
-        let nombre_grupo = document.getElementById('input-nombre').value
-
-        this.base.curso = this.state.curso_seleccionado
-        this.base.empleados = this.state.cursantes
-        this.base.fecha_inicio = `${day}/${month}/${year}`            
-        this.base.fecha_fin = `${day}/${month+1}/${year}`
-        this.base.nombre_grupo = nombre_grupo
-        console.log(this.base.empleados)
-            
-              
-        fetch(`http://localhost:9000/api/grupo`,{
-            method: 'POST',
-            body: JSON.stringify(this.base),
-            headers: {
+            fetch(`http://localhost:9000/api/grupo/${id}`,{
+              method: 'PUT',                      
+              body: JSON.stringify({
+                nombre_grupo: nombre_grupo,
+                empleados: this.state.cursantes,
+                curso: this.state.curso_seleccionado,
+                fecha_inicio: this.base.fecha_inicio,
+                fecha_fin: this.base.fecha_fin,
+              }),
+              headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-                }
-              })
-              .then(res => res.json())
-              .then(data =>{alert('Grupo creado')})
-              .catch(err => console.error(err));
-          }
+              }
+            })
+            .then(res => res.json())
+            .then(data =>{alert('Grupo Actualizado')})
+            .catch(err => console.error(err));
+    }
 
   render(){
   return (
@@ -216,37 +247,40 @@ class CrearGrupFile extends Component {
             </div>
         {/* -------------------------------- SELECCIONAR CURSO -----------------------------*/}
         <div className="Basic">
-          
-          <div className="BasicSelect">   
-          
+            <div className="BasicSelect">   
             <Box sx={{ minWidth: 120 }}>
 
             <Form.Group controlId="sing-in-email-address">
                         <Form.Control id='input-nombre' required type='email' size='lg' placeholder="Nombre del grupo" autoComplete="username" className="position-relative"/>
                     </Form.Group>
 
-              <FormControl fullWidth>
+            <FormControl fullWidth>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                  Seleccione Cursos Disponibles
+                Seleccione Cursos Disponibles
                 </InputLabel>
                 <NativeSelect
-                  defaultValue={1}
-                  inputProps={{
+                
+                inputProps={{
                     name: 'Seleccione Cursos Disponibles',
-                    id: 'uncontrolled-native',
-                  }}
-                  onChange ={this.Obtenercurso}
-                  >
-                    <option value = {this.curso_seleccionado}>*Seleccione un curso*</option>
-                  {
-                  this.state.cursos.map(elemento => 
+                    
+                }}
+                onChange ={this.Obtenercurso}
+                defaultValue={this.state.curso_seleccionado._id}
+                >
+                    <option value = {1}>*Seleccione Curso*</option>
+                    <option value = {this.state.curso_seleccionado._id}>⮞{this.state.curso_seleccionado['Nombre Curso']}</option>
+                    
+                    
+
+                {
+                this.state.cursos.map(elemento => 
                     {
-                      return(<option value = {elemento._id}  >{elemento['Nombre Curso']} </option>)
+                    return(<option value = {elemento._id}  >⮞{elemento['Nombre Curso']}  </option>)
                     }
                     )
                     }
                 </NativeSelect>
-              </FormControl>
+            </FormControl>
             </Box>
           </div>
         </div> {/* ----------------------------- FIN SELECCIOANR CURSO ------------------------------------*/}
@@ -292,7 +326,7 @@ class CrearGrupFile extends Component {
             
         <div className="Eliminar">
           <div className="EliminarEmpleado">
-            <h5>Empleados que harán curso de "{this.state.nombre_curso}"</h5>
+            <h5>Empleados que harán curso de "{this.state.curso_seleccionado['Nombre Curso']}"</h5>
             <div className="EliminarList"> 
               <div className="scrolla">              
                 <Box sx={{ display: 'flex' }}>
@@ -333,8 +367,8 @@ class CrearGrupFile extends Component {
         </div>
         <br></br>
         <div className="BotonFile">
-          <div className="Bcreargrupo">
-            <Button onClick ={this.CrearGrupo} variant="contained">CREAR GRUPO</Button>
+          <div className="BEditargrupo">
+            <Button onClick ={this.ActualizarGrupo} variant="contained">ACTUALIZAR GRUPO</Button>  
           </div>
           <div className="BLimpiar">
           <Button onClick = {this.Limpiar_todo} variant="contained" color="error" startIcon={<DeleteIcon />}>
@@ -347,45 +381,10 @@ class CrearGrupFile extends Component {
     }
 }
 
-export default CrearGrupFile;
+export default withParams(EditGroup);
 
 
 
 
 
-
-
-
-
-
-// function Checkboxes() {
-//   return (
-//     <div className="Checkboxes">
-//       <div className="CheckboxesList">
-//         <Form>
-//         {['checkbox', 'radio'].map((type) => (
-          
-//             <div key={type} className="mb-3">
-            
-//             <Form.Check type={type} id={`check-api-${type}`}>
-//               <Form.Check.Input type={type} isValid />
-//               <Form.Check.Label>{`Custom api ${type}`}</Form.Check.Label>
-//               <Form.Control.Feedback type="valid">
-//                 You did it!
-//               </Form.Control.Feedback>
-//             </Form.Check>
-//             </div>
-            
-          
-          
-//         ))}
-//       <Button variant="outlined">Primary</Button></Form>
-      
-      
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Checkboxes;
 

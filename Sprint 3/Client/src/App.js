@@ -6,9 +6,10 @@ import VerEmpleados from './pages/VerEmpleados';
 //import { ChakraProvider } from '@chakra-ui/react'
 import Login from './pages/Login';
 import VerGrupos from './pages/VerGrupos';
-import CerrarSesion from './pages/Usuario';
+import CerrarSesion from './pages/CerrarSesion';
 import Monitorear from './pages/Monitorear';
 import Actualizargrupos from './pages/Actualizargrupos';
+import Usuario from './pages/Usuario';
 import { Route, Routes } from "react-router-dom"
 
 
@@ -22,7 +23,8 @@ function App() {
           <Route path='/verempleados' element={<VerEmpleados/>}/>  
           <Route path='/vergrupos' element={<VerGrupos/>}/>
           <Route path='/actualizargrupos/:id' element={<Actualizargrupos/>}/>  
-          <Route path='/monitorear' element={<Monitorear/>}/>  
+          <Route path='/monitorear' element={<Monitorear/>}/>
+          <Route path='/User' element={<Usuario/>}/>    
           <Route path='/cerrarsesion' element={<CerrarSesion/>}/> 
         </Routes>
     </div>
