@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../Components//Sidebar_U'
+import Sidebar from '../Components/Sidebar_U'
 import User from '../Components/User'
 
 const Usuario = () => {

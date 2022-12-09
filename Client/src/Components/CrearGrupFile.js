@@ -31,7 +31,7 @@ class CrearGrupFile extends Component {
           duracion_curso: 0,
         }
         this.base = {
-            nombre_grupo: 'test',
+            nombre_grupo: '',
             empleados: [],
             curso: [],
             fecha_inicio: '',
@@ -167,8 +167,6 @@ class CrearGrupFile extends Component {
       this.setState({ empleados: data });})
     }
 
-
-
       CrearGrupo(e){
         // crea un nuevo objeto `Date`
         var today = new Date();
@@ -182,20 +180,32 @@ class CrearGrupFile extends Component {
         this.base.fecha_inicio = `${day}/${month}/${year}`            
         this.base.fecha_fin = `${day}/${month+1}/${year}`
         this.base.nombre_grupo = nombre_grupo
-        console.log(this.base.empleados)
+        if (nombre_grupo == ''){
+          alert('Ingrese un nombre al grupo por favor')
+        }else{
+          if((this.base.curso).length == 0){
+            alert('seleccione un curso por favor')
+          }else{
+            if(this.base.empleados == ''){
+              alert('por favaor ingrese seleccione empleados')
+            }else{
+              fetch(`http://localhost:9000/api/grupo`,{
+                method: 'POST',
+                body: JSON.stringify(this.base),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    }
+                  })
+                  .then(res => res.json())
+                  .then(data =>{alert('Grupo creado')})
+                  .catch(err => console.error(err));
+            }
+          }
+        }
             
-              
-        fetch(`http://localhost:9000/api/grupo`,{
-            method: 'POST',
-            body: JSON.stringify(this.base),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                }
-              })
-              .then(res => res.json())
-              .then(data =>{alert('Grupo creado')})
-              .catch(err => console.error(err));
+               
+
           }
 
   render(){
@@ -289,7 +299,6 @@ class CrearGrupFile extends Component {
           </div>
         </div>
 
-            
         <div className="Eliminar">
           <div className="EliminarEmpleado">
             <h5>Empleados que harán curso de "{this.state.nombre_curso}"</h5>

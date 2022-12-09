@@ -19,7 +19,7 @@ export const SidebarData = [
     },
     {
         title: "Cerrar Sesión",
-        link: "/cerrarsesion"
+        link: "/"
     },
 
 

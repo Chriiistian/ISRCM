@@ -1,4 +1,5 @@
 const express = require("express");
+const empleados = require("../models/empleados.js");
 const groupSchema = require("../models/group.js");
 
 const router = express.Router();
@@ -19,7 +20,15 @@ router.get("/grupo", (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   });
-  
+
+  router.get("/grupo/empleado/:rut", (req, res) => {  
+    const { rut } = req.params;
+    groupSchema
+      .find({empleados:{$elemMatch:{['Rut']: rut}}})
+      .then((data) => res.json(data))
+      .catch((error) => res.json({ message: error }));
+  });
+ 
   // get a user
   router.get("/grupo/:id", (req, res) => {
     const { id } = req.params;

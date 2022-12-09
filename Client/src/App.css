@@ -2,10 +2,11 @@
   width: 100vw;
   height: 100vh;
 }
+
 /*Sidebar imagenes */ 
 #background-login{
   height: auto;
-  background: linear-gradient(90deg, rgba(78,255,0,1) 0%, rgba(38,165,130,1) 43%, rgba(35,52,179,1) 100%);
+  background: linear-gradient(90deg, rgb(173, 242, 144) 0%, rgba(38,165,130,1) 43%, rgba(35,52,179,1) 100%);
 }
 
 /* ES PARA QUE EL LINK TO SE VUELVA COLOR BLANCO */
@@ -282,13 +283,13 @@ body{
 
 /*VER GRUPO*/
 .ViewGroup {
-  height: 45vw;
   width: 950px;
   border-radius: 10px ;
   display: block;
   background-color: #01C681;
   position: static;
   margin: 20px auto;
+  min-height: 100vh;
 }
 
 .btn1{
@@ -349,7 +350,7 @@ body{
 
 
 .Monitoring {
-  height: 45vw;
+  min-height: 100vh;
   width: 950px;
   border-radius: 10px ;
   display: block;
@@ -364,6 +365,8 @@ body{
   vertical-align: text-top;
   background-color: #D9D9D9;
   border-color: black;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #Cur_sec{
@@ -385,4 +388,15 @@ body{
   overflow-y: scroll;
   overflow-x: hidden;
   border: 3px solid  black;
+}
+#User_menu{
+  color: white;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid white;
+}
+
+#tittle{
+  color: #ffffff;
 }

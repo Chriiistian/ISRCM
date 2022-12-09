@@ -1,12 +1,7 @@
 const mongoose = require("mongoose");
 
 const cuentaSchema = mongoose.Schema({
-  admin: {
-    type: Boolean,
-    required: true
-  },
-
-  correo: {
+  rut: {
     type: String,
     required: true,
   },
@@ -14,7 +9,12 @@ const cuentaSchema = mongoose.Schema({
     type: String,
     required: true,
 
-  }
+  },
+  admin: {
+    type: Boolean,
+    required: true
+  },
+ 
 
 },
   

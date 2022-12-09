@@ -34,7 +34,7 @@ const empleadosShema = mongoose.Schema({
         type: Number,
         required:true
     },
-    rut:{ //la agrege para verempleados(ya que pedia rut)
+    Rut:{ //la agrege para verempleados(ya que pedia rut)
         type:String,
         required:true
     }

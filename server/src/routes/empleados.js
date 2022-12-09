@@ -20,6 +20,17 @@ router.get("/empleado", (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   });
+//gwt user by rut
+  router.get("/empleado/rut/:rut", (req, res) => {
+    const { rut } = req.params;
+    
+    empleadosShema
+      .find({['Rut']:rut})
+      .then((data) => res.json(data))
+      .catch((error) => res.json({ message: error }));
+
+  });
+  
 
   module.exports = router;
   

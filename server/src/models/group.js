@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-
 const groupSchema = mongoose.Schema({
-
   nombre_grupo: {
     type: String,
     required: true,
@@ -9,7 +7,6 @@ const groupSchema = mongoose.Schema({
   empleados: {
     type: Object,
     required: true,
-
   },
   curso: {
     type: Object,
@@ -23,12 +20,7 @@ const groupSchema = mongoose.Schema({
     type: String,
     required: true
   }
-
 },
-  
   {collection: 'Grupos', versionkey: false }
 );
-
 module.exports = mongoose.model('Grupos', groupSchema);
-
-

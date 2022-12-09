@@ -2,8 +2,8 @@
 
 export const SidebarData_U = [
     {
-        title: "Cerrar Sesión",
-        link: "/cerrarsesion"
+        title: "Cerrar sesión",
+        link: "/"
     },
 
 

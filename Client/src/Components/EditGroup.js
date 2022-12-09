@@ -55,8 +55,6 @@ class EditGroup extends Component {
       componentDidMount() {
         this.obtenerDatos();
           this.fetchCurso();
-          
-          
         }
       
       checkclick = (e) =>{

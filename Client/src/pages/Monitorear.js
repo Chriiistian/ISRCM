@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../Components//Sidebar'
+import Sidebar from '../Components/Sidebar'
 import Monitoring from '../Components/Monitoring'
 
 const Monitorear = () => {

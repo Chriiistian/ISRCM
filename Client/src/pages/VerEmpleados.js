@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../Components//Sidebar'
+import Sidebar from '../Components/Sidebar'
 import ViewEmp from '../Components/ViewEmp'
 
 const VerEmpleados = () => {
